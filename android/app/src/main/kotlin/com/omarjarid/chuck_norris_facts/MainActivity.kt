@@ -1,0 +1,5 @@
+package com.omarjarid.chuck_norris_facts
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity()
