@@ -42,6 +42,12 @@ dependencies:
   # Dependency injection
   flutter_simple_dependency_injection: ^2.0.0
 
+  # State management
+  flutter_bloc: ^9.1.1
+
+  # Logger
+  fimber_io: ^0.7.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
