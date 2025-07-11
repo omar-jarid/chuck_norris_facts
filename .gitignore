@@ -1,5 +1,6 @@
 # Miscellaneous
 *.class
+*.lock
 *.log
 *.pyc
 *.swp
@@ -46,5 +47,3 @@ release_env.g.dart
 /android/app/debug
 /android/app/profile
 /android/app/release
-
-pubspec.lock
