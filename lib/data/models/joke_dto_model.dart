@@ -17,7 +17,7 @@ class JokeDtoModel {
     categories: json["categories"] == null
       ? null
       : List<String>.from(json["categories"].map((x) => x)),
-    iconUrl: json["iconUrl"] ?? '',
+    iconUrl: json["icon_url"] ?? '',
     id: json["id"] ?? '',
     value: json["value"] ?? '',
   );

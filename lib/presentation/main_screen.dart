@@ -1,5 +1,6 @@
 import 'package:chuck_norris_facts/domain/models/joke_model.dart';
 import 'package:chuck_norris_facts/presentation/cubit/load_random_joke/load_random_joke_cubit.dart';
+import 'package:chuck_norris_facts/presentation/utils/dimens.dart';
 import 'package:fimber_io/fimber_io.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -68,18 +69,32 @@ class _SuccessLayout extends StatelessWidget {
   const _SuccessLayout(this.joke);
 
   @override
-  Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.all(16.0),
-    child: Text(joke.value, textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodyLarge),
-  );
+  Widget build(BuildContext context) {
+    final dimens = Dimens.getAppDimens(context);
+
+    return Padding(
+      padding: EdgeInsets.all(dimens.defaultPadding),
+      child: Column(
+        children: [
+          Image.network(
+            joke.iconUrl,
+            width: dimens.chuckNorrisIconSize,
+            height: dimens.chuckNorrisIconSize
+          ),
+          Text(
+            joke.value,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyLarge
+          )
+        ]
+      )
+    );
+  }
 }
 
 class _InitialLayout extends StatelessWidget {
   const _InitialLayout({super.key});
 
   @override
-  Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.all(16.0),
-    child: Text('Press the button', textAlign: TextAlign.center),
-  );
+  Widget build(BuildContext context) => Container();
 }
