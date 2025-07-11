@@ -4,6 +4,7 @@ import 'package:chuck_norris_facts/presentation/utils/dimens.dart';
 import 'package:fimber_io/fimber_io.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -17,7 +18,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Chuck Norris Facts'),
+        title: Text(AppLocalizations.of(context)!.appName),
       ),
       body: Center(
         child: Column(
@@ -45,7 +46,7 @@ class _MainScreenState extends State<MainScreen> {
               onPressed: () {
                 context.read<LoadRandomJokeCubit>().getRandomJoke();
               },
-              child: Text('Load random Chuck Norris fact')
+              child: Text(AppLocalizations.of(context)!.buttonText)
             )
           ],
         ),
