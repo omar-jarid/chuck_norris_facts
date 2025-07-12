@@ -1,4 +1,5 @@
 {
     "appName": "Chuck Norris Facts",
-    "buttonText": "Get a random Chuck Norris fact"
+    "buttonText": "Get a random Chuck Norris fact",
+    "none": "none"
 }

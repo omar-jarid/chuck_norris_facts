@@ -19,18 +19,23 @@ class Dimens {
 abstract class AppDimensions {
   final double defaultPadding;
 
+  final double size16;
+
   final double chuckNorrisIconSize;
 
   AppDimensions._(
     this.defaultPadding,
+    this.size16,
     this.chuckNorrisIconSize
   );
 }
 
-// TODO: Insert dimensions such as in Compose.
 class _DefaultDimens implements AppDimensions {
   @override
   double get defaultPadding => 16.0;
+
+  @override
+  double get size16 => 16.0;
 
   @override
   double get chuckNorrisIconSize => 100.0;
@@ -39,6 +44,9 @@ class _DefaultDimens implements AppDimensions {
 class _SmallSizeDimens implements AppDimensions {
   @override
   double get defaultPadding => 12.0;
+
+  @override
+  double get size16 => 12.0;
 
   @override
   double get chuckNorrisIconSize => 100.0;

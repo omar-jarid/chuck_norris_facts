@@ -1,4 +1,5 @@
 import 'package:chuck_norris_facts/domain/models/joke_model.dart';
+import 'package:chuck_norris_facts/presentation/cubit/load_categories/load_categories_cubit.dart';
 import 'package:chuck_norris_facts/presentation/cubit/load_random_joke/load_random_joke_cubit.dart';
 import 'package:chuck_norris_facts/presentation/utils/dimens.dart';
 import 'package:fimber_io/fimber_io.dart';
@@ -14,6 +15,20 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  late String _selectedCategory;
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<LoadCategoriesCubit>().loadCategories();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _selectedCategory = AppLocalizations.of(context)!.none;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,6 +39,37 @@ class _MainScreenState extends State<MainScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+
+            BlocBuilder<LoadCategoriesCubit, List<String>>(
+              builder: (context, categories) => categories.isEmpty
+                ? const SizedBox() : Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: Dimens.getAppDimens(context).size16
+                  ),
+                  child: DropdownButton<String>(
+                    value: _selectedCategory,
+                    isExpanded: true,
+                    items: [
+                      DropdownMenuItem<String>(
+                        value: AppLocalizations.of(context)!.none,
+                        child: Text(AppLocalizations.of(context)!.none),
+                      ),
+                      ...categories.map(
+                      (category) => DropdownMenuItem<String>(
+                        value: category,
+                        child: Text(category),
+                      )
+                    )],
+                    onChanged: (value) => setState(
+                      () => _selectedCategory =
+                        value ?? AppLocalizations.of(context)!.none
+                    )
+                  ),
+                ),
+            ),
+
+            SizedBox(height: Dimens.getAppDimens(context).size16),
+
             BlocConsumer<LoadRandomJokeCubit, LoadRandomJokeCubitState>(
               listener: (context, state) {
                 if (state is LoadRandomJokeCubitError) {
@@ -43,9 +89,8 @@ class _MainScreenState extends State<MainScreen> {
               }
             ),
             ElevatedButton(
-              onPressed: () {
-                context.read<LoadRandomJokeCubit>().getRandomJoke();
-              },
+              onPressed: () => context.read<LoadRandomJokeCubit>()
+                .getRandomJoke(_selectedCategory),
               child: Text(AppLocalizations.of(context)!.buttonText)
             )
           ],
