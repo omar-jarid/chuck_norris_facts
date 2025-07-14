@@ -21,6 +21,7 @@ abstract class AppDimensions {
 
   final double size12;
   final double size16;
+  final double size20;
 
   final double chuckNorrisIconSize;
   final double cardElevation;
@@ -30,6 +31,7 @@ abstract class AppDimensions {
     this.defaultPadding,
     this.size12,
     this.size16,
+    this.size20,
     this.chuckNorrisIconSize,
     this.cardElevation,
     this.cardRadius
@@ -45,6 +47,9 @@ class _DefaultDimens implements AppDimensions {
 
   @override
   double get size16 => 16.0;
+
+  @override
+  double get size20 => 20.0;
 
   @override
   double get chuckNorrisIconSize => 100.0;
@@ -65,6 +70,9 @@ class _SmallSizeDimens implements AppDimensions {
 
   @override
   double get size16 => 12.0;
+
+  @override
+  double get size20 => 15.0;
 
   @override
   double get chuckNorrisIconSize => 100.0;

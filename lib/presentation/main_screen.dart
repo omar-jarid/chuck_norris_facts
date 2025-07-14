@@ -87,45 +87,45 @@ class _MainScreenState extends State<MainScreen> {
                 }
               },
               builder: (context, state) {
+                final isLoading = state is LoadRandomJokeCubitLoading;
+
                 Widget child;
 
                 if (state is LoadRandomJokeCubitInitial) {
                   child =  const _InitialLayout();
-                } else if (state is LoadRandomJokeCubitLoading) {
-                  child = const _LoadingLayout();
                 } else if (state is LoadRandomJokeCubitSuccess) {
                   child = _SuccessLayout(state.result);
                 } else { child = Container(); }
 
-                return AnimatedSwitcher(
-                    duration: kAnimationDurationShort,
-                    transitionBuilder: (child, animation) => FadeTransition(
-                      opacity: animation,
+                return Column(
+                  children: [
+                    AnimatedSwitcher(
+                      duration: kAnimationDurationShort,
+                      transitionBuilder: (child, animation) => FadeTransition(
+                        opacity: animation,
+                        child: child
+                      ),
                       child: child
                     ),
-                    child: child
+                    ElevatedButton(
+                      onPressed: () => context.read<LoadRandomJokeCubit>()
+                        .getRandomJoke(_selectedCategory),
+                      child: isLoading
+                        ? SizedBox(
+                        width: dimens.size20,
+                        height: dimens.size20,
+                        child: const CircularProgressIndicator()
+                      ) : Text(localization.buttonText)
+                    )
+                  ],
                 );
               }
             ),
-            ElevatedButton(
-              onPressed: () => context.read<LoadRandomJokeCubit>()
-                .getRandomJoke(_selectedCategory),
-              child: Text(localization.buttonText)
-            )
           ],
         ),
       ),
     );
   }
-}
-
-class _LoadingLayout extends StatelessWidget {
-  const _LoadingLayout();
-
-  @override
-  Widget build(BuildContext context) => const Center(
-    child: CircularProgressIndicator()
-  );
 }
 
 class _SuccessLayout extends StatelessWidget {
