@@ -33,10 +33,11 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final dimens = Dimens.getAppDimens(context);
+    final localization = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.appName),
-      ),
+      appBar: AppBar(title: Text(localization.appName),),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -45,32 +46,39 @@ class _MainScreenState extends State<MainScreen> {
             BlocBuilder<LoadCategoriesCubit, List<String>>(
               builder: (context, categories) => categories.isEmpty
                 ? const SizedBox() : Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: Dimens.getAppDimens(context).size16
-                  ),
-                  child: DropdownButton<String>(
-                    value: _selectedCategory,
-                    isExpanded: true,
-                    items: [
-                      DropdownMenuItem<String>(
-                        value: AppLocalizations.of(context)!.none,
-                        child: Text(AppLocalizations.of(context)!.none),
+                  padding: EdgeInsets.symmetric(horizontal: dimens.size16),
+                  child: InputDecorator(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(dimens.cardRadius)
                       ),
-                      ...categories.map(
-                      (category) => DropdownMenuItem<String>(
-                        value: category,
-                        child: Text(category),
-                      )
-                    )],
-                    onChanged: (value) => setState(
-                      () => _selectedCategory =
-                        value ?? AppLocalizations.of(context)!.none
-                    )
+                      labelText: localization.selectCategory
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        value: _selectedCategory,
+                        isExpanded: true,
+                        items: [
+                          DropdownMenuItem<String>(
+                            value: localization.none,
+                            child: Text(localization.none),
+                          ),
+                          ...categories.map(
+                          (category) => DropdownMenuItem<String>(
+                            value: category,
+                            child: Text(category),
+                          )
+                        )],
+                        onChanged: (value) => setState(
+                          () => _selectedCategory = value ?? localization.none
+                        )
+                      ),
+                    ),
                   ),
                 ),
             ),
 
-            SizedBox(height: Dimens.getAppDimens(context).size16),
+            SizedBox(height: dimens.size16),
 
             BlocConsumer<LoadRandomJokeCubit, LoadRandomJokeCubitState>(
               listener: (context, state) {
@@ -102,7 +110,7 @@ class _MainScreenState extends State<MainScreen> {
             ElevatedButton(
               onPressed: () => context.read<LoadRandomJokeCubit>()
                 .getRandomJoke(_selectedCategory),
-              child: Text(AppLocalizations.of(context)!.buttonText)
+              child: Text(localization.buttonText)
             )
           ],
         ),

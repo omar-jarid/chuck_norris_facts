@@ -1,5 +1,6 @@
 {
     "appName": "Chuck Norris Facts",
     "buttonText": "Get a random Chuck Norris fact",
+    "selectCategory": "Select a category",
     "none": "none"
 }
