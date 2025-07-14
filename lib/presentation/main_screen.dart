@@ -1,6 +1,7 @@
 import 'package:chuck_norris_facts/domain/models/joke_model.dart';
 import 'package:chuck_norris_facts/presentation/cubit/load_categories/load_categories_cubit.dart';
 import 'package:chuck_norris_facts/presentation/cubit/load_random_joke/load_random_joke_cubit.dart';
+import 'package:chuck_norris_facts/constants/constants.dart';
 import 'package:chuck_norris_facts/presentation/utils/dimens.dart';
 import 'package:chuck_norris_facts/presentation/widgets/joke_card.dart';
 import 'package:fimber_io/fimber_io.dart';
@@ -78,15 +79,24 @@ class _MainScreenState extends State<MainScreen> {
                 }
               },
               builder: (context, state) {
-                if (state is LoadRandomJokeCubitInitial) {
-                  return const _InitialLayout();
-                } else if (state is LoadRandomJokeCubitLoading) {
-                  return const _LoadingLayout();
-                } else if (state is LoadRandomJokeCubitSuccess) {
-                  return _SuccessLayout(state.result);
-                }
+                Widget child;
 
-                return Container();
+                if (state is LoadRandomJokeCubitInitial) {
+                  child =  const _InitialLayout();
+                } else if (state is LoadRandomJokeCubitLoading) {
+                  child = const _LoadingLayout();
+                } else if (state is LoadRandomJokeCubitSuccess) {
+                  child = _SuccessLayout(state.result);
+                } else { child = Container(); }
+
+                return AnimatedSwitcher(
+                    duration: kAnimationDurationShort,
+                    transitionBuilder: (child, animation) => FadeTransition(
+                      opacity: animation,
+                      child: child
+                    ),
+                    child: child
+                );
               }
             ),
             ElevatedButton(

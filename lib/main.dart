@@ -2,6 +2,7 @@ import 'package:chuck_norris_facts/di/main_module.dart';
 import 'package:chuck_norris_facts/presentation/cubit/load_categories/load_categories_cubit.dart';
 import 'package:chuck_norris_facts/presentation/cubit/load_random_joke/load_random_joke_cubit.dart';
 import 'package:chuck_norris_facts/presentation/main_screen.dart';
+import 'package:chuck_norris_facts/presentation/themes/themes.dart';
 import 'package:fimber_io/fimber_io.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,10 +25,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      themeMode: ThemeMode.system,
       home: MultiBlocProvider(
         providers: [
           BlocProvider<LoadRandomJokeCubit>(
