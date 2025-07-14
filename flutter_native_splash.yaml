@@ -1,0 +1,8 @@
+flutter_native_splash:
+  android: true
+  ios: true
+  image: assets/images/chuck-norris.png
+  color: "#FFFFFF"
+  android_12:
+    image: assets/images/chuck-norris.png
+    color: "#FFFFFF"
