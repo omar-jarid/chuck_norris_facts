@@ -1,10 +1,10 @@
+import 'package:chuck_norris_facts/generated/app_localizations.dart';
 import 'package:chuck_norris_facts/presentation/cubit/load_categories/load_categories_cubit.dart';
 import 'package:chuck_norris_facts/presentation/utils/dimens.dart';
 import 'package:chuck_norris_facts/presentation/widgets/category_dropdown.dart';
 import 'package:chuck_norris_facts/presentation/widgets/joke_display_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
