@@ -39,14 +39,19 @@ class _MainScreenState extends State<MainScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CategoryDropdown(
-              selectedCategory: _selectedCategory,
-              onChanged: (value) => setState(
-                () => _selectedCategory = value ?? localization.none
-              )
+            Padding(
+              padding: EdgeInsets.all(dimens.defaultPadding),
+              child: CategoryDropdown(
+                selectedCategory: _selectedCategory,
+                onChanged: (value) => setState(
+                  () => _selectedCategory = value ?? localization.none
+                )
+              ),
             ),
             SizedBox(height: dimens.size16),
-            JokeDisplaySection(selectedCategory: _selectedCategory)
+            Expanded(
+              child: JokeDisplaySection(selectedCategory: _selectedCategory)
+            )
           ]
         )
       )
