@@ -6,8 +6,6 @@ Built with modern Flutter architecture and best practices.
 ## Features
 
 - Display random Chuck Norris facts
-- Clean and modern UI
-- Offline support
 - Error handling
 - Loading states
 
