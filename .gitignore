@@ -50,7 +50,6 @@ release_env.g.dart
 /android/app/profile
 /android/app/release
 /.idea
-*.lock
 
 # Generated files
 lib/generated/
