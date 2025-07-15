@@ -46,9 +46,7 @@ debug_env.g.dart
 release_env.g.dart
 
 # Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
+/android/app/
 /.idea
 
 # Generated files
