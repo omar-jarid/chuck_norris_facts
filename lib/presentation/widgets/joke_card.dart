@@ -27,10 +27,14 @@ class JokeCard extends StatelessWidget {
               height: dimens.chuckNorrisIconSize
             ),
             SizedBox(height: dimens.size12),
-            Text(
-              joke.value,
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyLarge
+            Expanded(
+              child: SingleChildScrollView(
+                child: Text(
+                  joke.value,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyLarge
+                ),
+              ),
             )
           ]
         )

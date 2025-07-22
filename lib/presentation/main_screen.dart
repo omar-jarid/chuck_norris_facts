@@ -6,6 +6,8 @@ import 'package:chuck_norris_facts/presentation/widgets/joke_display_section.dar
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'cubit/load_random_joke/load_random_joke_cubit.dart';
+
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
@@ -51,7 +53,20 @@ class _MainScreenState extends State<MainScreen> {
             SizedBox(height: dimens.size16),
             Expanded(
               child: JokeDisplaySection(selectedCategory: _selectedCategory)
-            )
+            ),
+            Padding(
+              padding: EdgeInsets.all(dimens.defaultPadding),
+              child: SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    context.read<LoadRandomJokeCubit>()
+                      .getRandomJoke(_selectedCategory);
+                  },
+                  child: Text(localization.buttonText),
+                ),
+              ),
+            ),
           ]
         )
       )
