@@ -17,7 +17,13 @@ class JokeDisplaySection extends StatelessWidget {
     final dimens = Dimens.getAppDimens(context);
     final localization = AppLocalizations.of(context)!;
 
-    return BlocConsumer<LoadRandomJokeCubit, LoadRandomJokeCubitState>(
+    return BlocBuilder<LoadRandomJokeCubit, LoadRandomJokeCubitState>(
+      builder: (context, state) => state is LoadRandomJokeCubitSuccess
+        ? JokeCard(state.result)
+        : Container()
+    );
+
+    /*return BlocConsumer<LoadRandomJokeCubit, LoadRandomJokeCubitState>(
       listener: (context, state) {
         if (state is LoadRandomJokeCubitError) Fimber.e(state.error.toString());
       },
@@ -49,6 +55,6 @@ class JokeDisplaySection extends StatelessWidget {
           ],
         );
       }
-    );
+    );*/
   }
 }
