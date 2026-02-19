@@ -7,7 +7,7 @@ import 'package:chuck_norris_facts/presentation/themes/themes.dart';
 import 'package:fimber_io/fimber_io.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_simple_dependency_injection/Injector.dart';
+import 'package:flutter_simple_dependency_injection/injector.dart';
 
 void main() {
   Fimber.plantTree(DebugTree());
