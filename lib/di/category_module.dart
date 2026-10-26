@@ -5,7 +5,7 @@ import 'package:chuck_norris_facts/domain/usecases/get_categories_use_case.dart'
 import 'package:chuck_norris_facts/domain/usecases/get_random_joke_use_case.dart';
 import 'package:chuck_norris_facts/presentation/cubit/load_categories/load_categories_cubit.dart';
 import 'package:chuck_norris_facts/presentation/cubit/load_random_joke/load_random_joke_cubit.dart';
-import 'package:flutter_simple_dependency_injection/Injector.dart';
+import 'package:flutter_simple_dependency_injection/injector.dart';
 
 class CategoryModule implements AbstractModule {
   static void configure(Injector injector) {
