@@ -41,11 +41,7 @@ dependencies:
   # HTTP client
   dio: ^5.11.1
 
-  # Dependency injection
-  flutter_simple_dependency_injection: ^2.0.0
-
-  # State management
-  flutter_bloc: ^9.1.1
+  # Dependency injection and state management
   flutter_riverpod: ^3.4.3
 
   # Logger

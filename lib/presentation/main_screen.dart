@@ -6,7 +6,6 @@ import 'package:chuck_norris_facts/presentation/widgets/joke_display_section.dar
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
 class MainScreen extends ConsumerStatefulWidget {
   const MainScreen({super.key});
 
