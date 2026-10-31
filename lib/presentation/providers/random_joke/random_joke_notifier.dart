@@ -1,5 +1,5 @@
+import 'package:chuck_norris_facts/di/app_providers.dart';
 import 'package:chuck_norris_facts/domain/models/joke_model.dart';
-import 'package:chuck_norris_facts/presentation/providers/random_joke/random_joke_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class RandomJokeNotifier extends AsyncNotifier<JokeModel?> {
