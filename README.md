@@ -1,6 +1,7 @@
 # Chuck Norris Facts
 
-A Flutter application that displays random Chuck Norris facts. 
+A Flutter application that displays random Chuck Norris facts.
+
 Built with modern Flutter architecture and best practices.
 
 ## Features
@@ -16,8 +17,7 @@ Built with modern Flutter architecture and best practices.
 - Flutter SDK
 - Dart 3.5.2+
 - Architecture:
-  - BLoC for state management
-  - Dependency Injection with flutter_simple_dependency_injection
+  - Riverpod for state management and Dependency Injection
   - Clean Architecture principles
 - Networking:
   - Dio for HTTP requests
