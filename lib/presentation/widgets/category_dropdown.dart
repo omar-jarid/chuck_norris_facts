@@ -1,5 +1,5 @@
 import 'package:chuck_norris_facts/generated/app_localizations.dart';
-import 'package:chuck_norris_facts/presentation/providers/categories_provider.dart';
+import 'package:chuck_norris_facts/presentation/providers/categories/categories_provider.dart';
 import 'package:chuck_norris_facts/presentation/utils/dimens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,7 +21,7 @@ class CategoryDropdown extends ConsumerWidget {
 
     return ref.watch(categoriesProvider).when(
       loading: () => const CircularProgressIndicator(),
-      error: (error, _) => Text('Could not load categories: $error'),
+      error: (error, _) => Text(localization.couldNotLoadCategories(error)),
       data: (categories) => categories.isEmpty
         ? const SizedBox() : Padding(
           padding: EdgeInsets.symmetric(horizontal: dimens.size16),

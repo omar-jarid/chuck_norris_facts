@@ -2,5 +2,7 @@
     "appName": "Chuck Norris Facts",
     "buttonText": "Get a random Chuck Norris fact",
     "selectCategory": "Select a category",
-    "none": "none"
+    "none": "none",
+    "couldNotLoadCategories": "Could not load categories: {error}",
+    "couldNotLoadJoke": "Could not load joke: {error}"
 }

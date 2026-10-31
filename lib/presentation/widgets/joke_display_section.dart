@@ -1,60 +1,22 @@
-import 'package:chuck_norris_facts/constants/constants.dart';
 import 'package:chuck_norris_facts/generated/app_localizations.dart';
-import 'package:chuck_norris_facts/presentation/cubit/load_random_joke/load_random_joke_cubit.dart';
-import 'package:chuck_norris_facts/presentation/utils/dimens.dart';
+import 'package:chuck_norris_facts/presentation/providers/random_joke/random_joke_provider.dart';
 import 'package:chuck_norris_facts/presentation/widgets/joke_card.dart';
-import 'package:fimber_io/fimber_io.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class JokeDisplaySection extends StatelessWidget {
+class JokeDisplaySection extends ConsumerWidget {
   final String selectedCategory;
 
   const JokeDisplaySection({super.key, required this.selectedCategory});
 
   @override
-  Widget build(BuildContext context) {
-    final dimens = Dimens.getAppDimens(context);
-    final localization = AppLocalizations.of(context)!;
-
-    return BlocBuilder<LoadRandomJokeCubit, LoadRandomJokeCubitState>(
-      builder: (context, state) => state is LoadRandomJokeCubitSuccess
-        ? JokeCard(state.result)
-        : Container()
-    );
-
-    /*return BlocConsumer<LoadRandomJokeCubit, LoadRandomJokeCubitState>(
-      listener: (context, state) {
-        if (state is LoadRandomJokeCubitError) Fimber.e(state.error.toString());
-      },
-      builder: (context, state) {
-        final isLoading = state is LoadRandomJokeCubitLoading;
-        final isSuccess = state is LoadRandomJokeCubitSuccess;
-
-        Widget child = isSuccess ? JokeCard(state.result) : Container();
-
-        return Column(
-          children: [
-            AnimatedSwitcher(
-              duration: kAnimationDurationShort,
-              transitionBuilder: (child, animation) => FadeTransition(
-                opacity: animation,
-                child: child
-              ),
-              child: child
-            ),
-            ElevatedButton(
-              onPressed: () => context.read<LoadRandomJokeCubit>()
-                .getRandomJoke(selectedCategory),
-              child: isLoading ? SizedBox(
-                width: dimens.size20,
-                height: dimens.size20,
-                child: const CircularProgressIndicator()
-              ) : Text(localization.buttonText)
-            )
-          ],
-        );
-      }
-    );*/
-  }
+  Widget build(BuildContext context, WidgetRef ref) => ref.watch(
+    randomJokeProvider
+  ).when(
+    loading: () => const Center(child: CircularProgressIndicator()),
+    data: (joke) => joke == null ? Container() : JokeCard(joke),
+    error: (error, _) => Center(
+      child: Text(AppLocalizations.of(context)?.couldNotLoadJoke(error) ?? '')
+    ),
+  );
 }

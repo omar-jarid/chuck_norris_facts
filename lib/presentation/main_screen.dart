@@ -1,12 +1,11 @@
 import 'package:chuck_norris_facts/generated/app_localizations.dart';
+import 'package:chuck_norris_facts/presentation/providers/random_joke/random_joke_provider.dart';
 import 'package:chuck_norris_facts/presentation/utils/dimens.dart';
 import 'package:chuck_norris_facts/presentation/widgets/category_dropdown.dart';
 import 'package:chuck_norris_facts/presentation/widgets/joke_display_section.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'cubit/load_random_joke/load_random_joke_cubit.dart';
 
 class MainScreen extends ConsumerStatefulWidget {
   const MainScreen({super.key});
@@ -53,10 +52,10 @@ class _MainScreenState extends ConsumerState<MainScreen> {
               child: SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {
-                    context.read<LoadRandomJokeCubit>()
-                      .getRandomJoke(_selectedCategory);
-                  },
+                  onPressed: () => ref.read(randomJokeProvider.notifier).load(
+                    category: _selectedCategory == localization.none
+                      ? null : _selectedCategory
+                  ),
                   child: Text(localization.buttonText),
                 ),
               ),
