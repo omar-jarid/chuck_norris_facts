@@ -1,28 +1,22 @@
 import 'package:chuck_norris_facts/generated/app_localizations.dart';
-import 'package:chuck_norris_facts/presentation/cubit/load_categories/load_categories_cubit.dart';
 import 'package:chuck_norris_facts/presentation/utils/dimens.dart';
 import 'package:chuck_norris_facts/presentation/widgets/category_dropdown.dart';
 import 'package:chuck_norris_facts/presentation/widgets/joke_display_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'cubit/load_random_joke/load_random_joke_cubit.dart';
 
-class MainScreen extends StatefulWidget {
+class MainScreen extends ConsumerStatefulWidget {
   const MainScreen({super.key});
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  ConsumerState<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreenState extends ConsumerState<MainScreen> {
   late String _selectedCategory;
-
-  @override
-  void initState() {
-    super.initState();
-    context.read<LoadCategoriesCubit>().loadCategories();
-  }
 
   @override
   void didChangeDependencies() {
