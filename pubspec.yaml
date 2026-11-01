@@ -45,7 +45,7 @@ dependencies:
   flutter_riverpod: ^3.4.3
 
   # Logger
-  fimber_io: ^0.7.0
+  groveman: ^1.3.0
 
   # Localization
   flutter_localizations:

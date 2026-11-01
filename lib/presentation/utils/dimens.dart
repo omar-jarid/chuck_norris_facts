@@ -1,4 +1,4 @@
-import 'package:fimber_io/fimber_io.dart';
+import 'package:groveman/groveman.dart';
 import 'package:flutter/material.dart';
 
 class Dimens {
@@ -8,7 +8,8 @@ class Dimens {
     double screenWidthSize = MediaQuery.of(context).size.width;
 
     if (screenWidthSize <= _screenWidthSmallSize) {
-      Fimber.d(screenWidthSize.toString());
+      Groveman.debug(screenWidthSize.toString());
+
       return _SmallSizeDimens();
     }
 

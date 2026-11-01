@@ -1,12 +1,12 @@
 import 'package:chuck_norris_facts/generated/app_localizations.dart';
 import 'package:chuck_norris_facts/presentation/main_screen.dart';
 import 'package:chuck_norris_facts/presentation/themes/themes.dart';
-import 'package:fimber_io/fimber_io.dart';
+import 'package:groveman/groveman.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  Fimber.plantTree(DebugTree());
+  Groveman.plantTree(DebugTree());
   runApp(const ProviderScope(child: MyApp()));
 }
 
