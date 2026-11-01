@@ -18,7 +18,8 @@ class NetworkDataSourceImpl implements NetworkDataSource {
   @override
   Future<List<String>> getCategories() async {
     final response = await apiService.getCategories();
-    return List<String>.from(response.data);
+
+    return .from(response.data);
   }
 
   @override

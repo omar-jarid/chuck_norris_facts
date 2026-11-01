@@ -11,7 +11,7 @@ class ApiService {
 
   Future<Response> getRandomJoke() => api.get("/jokes/random");
 
-  Future<Response> getRandomJokePerCategory(String category) {
-    return api.get("/jokes/random?category=$category");
-  }
+  Future<Response> getRandomJokePerCategory(String category) => api.get(
+    "/jokes/random?category=$category"
+  );
 }

@@ -1,3 +1,1 @@
-abstract class CategoryRepository {
-  Future<List<String>> getCategories();
-}
+abstract class CategoryRepository { Future<List<String>> getCategories(); }

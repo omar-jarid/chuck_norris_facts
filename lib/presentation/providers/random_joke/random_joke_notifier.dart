@@ -8,7 +8,7 @@ class RandomJokeNotifier extends AsyncNotifier<JokeModel?> {
 
   Future<void> load({String? category}) async {
     state = const AsyncLoading();
-    state = await AsyncValue.guard(() async => category == null
+    state = await .guard(() async => category == null
       ? ref.read(getRandomJokeUseCaseProvider).invoke()
       : ref.read(getRandomJokePerCategoryUseCaseProvider).invoke(category)
     );

@@ -13,12 +13,10 @@ class JokeCard extends StatelessWidget {
 
     return Card(
       elevation: dimens.cardElevation,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(dimens.cardRadius)
-      ),
-      margin: EdgeInsets.all(dimens.defaultPadding),
+      shape: RoundedRectangleBorder(borderRadius: .circular(dimens.cardRadius)),
+      margin: .all(dimens.defaultPadding),
       child: Padding(
-        padding: EdgeInsets.all(dimens.defaultPadding),
+        padding: .all(dimens.defaultPadding),
         child: Column(
           children: [
             Image.network(
@@ -31,7 +29,7 @@ class JokeCard extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Text(
                   joke.value,
-                  textAlign: TextAlign.center,
+                  textAlign: .center,
                   style: Theme.of(context).textTheme.bodyLarge
                 ),
               ),

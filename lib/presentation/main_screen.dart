@@ -31,10 +31,10 @@ class _MainScreenState extends ConsumerState<MainScreen> {
       appBar: AppBar(title: Text(localization.appName)),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: .center,
           children: [
             Padding(
-              padding: EdgeInsets.all(dimens.defaultPadding),
+              padding: .all(dimens.defaultPadding),
               child: CategoryDropdown(
                 selectedCategory: _selectedCategory,
                 onChanged: (value) => setState(
@@ -47,9 +47,9 @@ class _MainScreenState extends ConsumerState<MainScreen> {
               child: JokeDisplaySection(selectedCategory: _selectedCategory)
             ),
             Padding(
-              padding: EdgeInsets.all(dimens.defaultPadding),
+              padding: .all(dimens.defaultPadding),
               child: SizedBox(
-                width: double.infinity,
+                width: .infinity,
                 child: ElevatedButton(
                   onPressed: () => ref.read(randomJokeProvider.notifier).load(
                     category: _selectedCategory == localization.none

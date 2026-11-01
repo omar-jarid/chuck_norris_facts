@@ -16,7 +16,7 @@ class JokeDtoModel {
   factory JokeDtoModel.fromJson(Map<String, dynamic> json) => JokeDtoModel(
     categories: json["categories"] == null
       ? null
-      : List<String>.from(json["categories"].map((x) => x)),
+      : .from(json["categories"].map((x) => x)),
     iconUrl: json["icon_url"] ?? '',
     id: json["id"] ?? '',
     value: json["value"] ?? '',

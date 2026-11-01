@@ -8,7 +8,7 @@ class Dimens {
     double screenWidthSize = MediaQuery.of(context).size.width;
 
     if (screenWidthSize <= _screenWidthSmallSize) {
-      Fimber.d("$screenWidthSize");
+      Fimber.d(screenWidthSize.toString());
       return _SmallSizeDimens();
     }
 
@@ -76,7 +76,6 @@ class _SmallSizeDimens implements AppDimensions {
 
   @override
   double get chuckNorrisIconSize => 100.0;
-
 
   @override
   double get cardElevation => 4.0;

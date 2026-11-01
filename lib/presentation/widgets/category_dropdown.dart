@@ -24,11 +24,11 @@ class CategoryDropdown extends ConsumerWidget {
       error: (error, _) => Text(localization.couldNotLoadCategories(error)),
       data: (categories) => categories.isEmpty
         ? const SizedBox() : Padding(
-          padding: EdgeInsets.symmetric(horizontal: dimens.size16),
+          padding: .symmetric(horizontal: dimens.size16),
           child: InputDecorator(
             decoration: InputDecoration(
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(dimens.cardRadius)
+                borderRadius: .circular(dimens.cardRadius)
               ),
               labelText: localization.selectCategory
             ),
