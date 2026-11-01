@@ -22,7 +22,7 @@ Built with modern Flutter architecture and best practices.
 - Networking:
   - Dio for HTTP requests
 - Utilities:
-  - Fimber for logging
+  - Groveman for logging
 
 ## Getting Started
 
