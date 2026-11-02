@@ -15,7 +15,7 @@ Built with modern Flutter architecture and best practices.
 ## Tech Stack
 
 - Flutter SDK
-- Dart 3.5.2+
+- Dart 3.10.3+
 - Architecture:
   - Riverpod for state management and Dependency Injection
   - Clean Architecture principles
