@@ -1,6 +1,5 @@
-import 'package:chuck_norris_facts/generated/app_localizations.dart';
 import 'package:chuck_norris_facts/presentation/providers/random_joke/random_joke_provider.dart';
-import 'package:chuck_norris_facts/presentation/utils/dimens.dart';
+import 'package:chuck_norris_facts/presentation/utils/context_extensions.dart';
 import 'package:chuck_norris_facts/presentation/widgets/category_dropdown.dart';
 import 'package:chuck_norris_facts/presentation/widgets/joke_display_section.dart';
 import 'package:flutter/material.dart';
@@ -19,49 +18,44 @@ class _MainScreenState extends ConsumerState<MainScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _selectedCategory = AppLocalizations.of(context)!.none;
+    _selectedCategory = context.l10n.none;
   }
 
   @override
-  Widget build(BuildContext context) {
-    final dimens = Dimens.getAppDimens(context);
-    final localization = AppLocalizations.of(context)!;
-
-    return Scaffold(
-      appBar: AppBar(title: Text(localization.appName)),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: .center,
-          children: [
-            Padding(
-              padding: .all(dimens.defaultPadding),
-              child: CategoryDropdown(
-                selectedCategory: _selectedCategory,
-                onChanged: (value) => setState(
-                  () => _selectedCategory = value ?? localization.none
-                )
-              ),
+  Widget build(BuildContext context) => Scaffold(
+    appBar: AppBar(title: Text(context.l10n.appName)),
+    body: Center(
+      child: Column(
+        mainAxisAlignment: .center,
+        children: [
+          Padding(
+            padding: .all(context.dimens.defaultPadding),
+            child: CategoryDropdown(
+              selectedCategory: _selectedCategory,
+              onChanged: (value) => setState(
+                () => _selectedCategory = value ?? context.l10n.none
+              )
             ),
-            SizedBox(height: dimens.size16),
-            Expanded(
-              child: JokeDisplaySection(selectedCategory: _selectedCategory)
-            ),
-            Padding(
-              padding: .all(dimens.defaultPadding),
-              child: SizedBox(
-                width: .infinity,
-                child: ElevatedButton(
-                  onPressed: () => ref.read(randomJokeProvider.notifier).load(
-                    category: _selectedCategory == localization.none
-                      ? null : _selectedCategory
-                  ),
-                  child: Text(localization.buttonText),
+          ),
+          SizedBox(height: context.dimens.size16),
+          Expanded(
+            child: JokeDisplaySection(selectedCategory: _selectedCategory)
+          ),
+          Padding(
+            padding: .all(context.dimens.defaultPadding),
+            child: SizedBox(
+              width: .infinity,
+              child: ElevatedButton(
+                onPressed: () => ref.read(randomJokeProvider.notifier).load(
+                  category: _selectedCategory == context.l10n.none
+                    ? null : _selectedCategory
                 ),
+                child: Text(context.l10n.buttonText),
               ),
             ),
-          ]
-        )
+          ),
+        ]
       )
-    );
-  }
+    )
+  );
 }

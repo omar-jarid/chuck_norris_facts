@@ -1,6 +1,5 @@
-import 'package:chuck_norris_facts/generated/app_localizations.dart';
 import 'package:chuck_norris_facts/presentation/providers/categories/categories_provider.dart';
-import 'package:chuck_norris_facts/presentation/utils/dimens.dart';
+import 'package:chuck_norris_facts/presentation/utils/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,22 +14,19 @@ class CategoryDropdown extends ConsumerWidget {
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final dimens = Dimens.getAppDimens(context);
-    final localization = AppLocalizations.of(context)!;
-
-    return ref.watch(categoriesProvider).when(
+  Widget build(BuildContext context, WidgetRef ref) =>
+    ref.watch(categoriesProvider).when(
       loading: () => const CircularProgressIndicator(),
-      error: (error, _) => Text(localization.couldNotLoadCategories(error)),
+      error: (error, _) => Text(context.l10n.couldNotLoadCategories(error)),
       data: (categories) => categories.isEmpty
         ? const SizedBox() : Padding(
-          padding: .symmetric(horizontal: dimens.size16),
+          padding: .symmetric(horizontal: context.dimens.size16),
           child: InputDecorator(
             decoration: InputDecoration(
               border: OutlineInputBorder(
-                borderRadius: .circular(dimens.cardRadius)
+                borderRadius: .circular(context.dimens.cardRadius)
               ),
-              labelText: localization.selectCategory
+              labelText: context.l10n.selectCategory
             ),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
@@ -39,8 +35,8 @@ class CategoryDropdown extends ConsumerWidget {
                 onChanged: onChanged,
                 items: [
                   DropdownMenuItem<String>(
-                    value: localization.none,
-                    child: Text(localization.none),
+                    value: context.l10n.none,
+                    child: Text(context.l10n.none),
                   ),
                   ...categories.map(
                     (category) => DropdownMenuItem<String>(
@@ -53,5 +49,4 @@ class CategoryDropdown extends ConsumerWidget {
          ),
         ),
     );
-  }
 }
