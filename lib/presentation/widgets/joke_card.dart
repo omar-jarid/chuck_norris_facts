@@ -1,6 +1,6 @@
 import 'package:chuck_norris_facts/domain/models/joke_model.dart';
 import 'package:chuck_norris_facts/presentation/utils/context_extensions.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class JokeCard extends StatelessWidget {
   final JokeModel joke;

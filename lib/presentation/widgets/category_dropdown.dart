@@ -1,7 +1,7 @@
 import 'package:chuck_norris_facts/presentation/providers/categories/categories_provider.dart';
 import 'package:chuck_norris_facts/presentation/utils/context_extensions.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 
 class CategoryDropdown extends ConsumerWidget {
   final String selectedCategory;

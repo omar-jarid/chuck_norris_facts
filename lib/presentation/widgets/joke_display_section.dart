@@ -1,9 +1,8 @@
-import 'package:chuck_norris_facts/generated/app_localizations.dart';
 import 'package:chuck_norris_facts/presentation/providers/random_joke/random_joke_provider.dart';
 import 'package:chuck_norris_facts/presentation/utils/context_extensions.dart';
 import 'package:chuck_norris_facts/presentation/widgets/joke_card.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 
 class JokeDisplaySection extends ConsumerWidget {
   final String selectedCategory;

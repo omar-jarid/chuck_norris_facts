@@ -2,8 +2,8 @@ import 'package:chuck_norris_facts/presentation/providers/random_joke/random_jok
 import 'package:chuck_norris_facts/presentation/utils/context_extensions.dart';
 import 'package:chuck_norris_facts/presentation/widgets/category_dropdown.dart';
 import 'package:chuck_norris_facts/presentation/widgets/joke_display_section.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 
 class MainScreen extends ConsumerStatefulWidget {
   const MainScreen({super.key});
